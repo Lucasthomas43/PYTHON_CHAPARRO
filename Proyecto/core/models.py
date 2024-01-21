@@ -1,36 +1,65 @@
 from django.db import models
+import datetime
 
-
-class Profesor(models.Model):
+class Producto(models.Model):
     nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=50)
-    email = models.EmailField()
+    marca = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_creacion = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self) -> str:
-        return f"{self.nombre} {self.apellido}"
+        return f"{self.nombre} {self.marca} {self.precio}"
+
+# Clase Zapatillas que hereda de Producto
+class Zapatilla(Producto):
+    talle = models.CharField(max_length=10)
+    pais_fabricante = models.CharField(max_length=30)
+
+# Clase Gorras que hereda de Producto
+class Gorra(Producto):
+    talle = models.CharField(max_length=10)
+    color = models.CharField(max_length=20)
+    pais_fabricante= models.CharField(max_length=30)
+
+# Clase Jeans que hereda de Producto
+class Jean(Producto):
+    talle = models.CharField(max_length=10)
+    modelo = models.CharField(max_length=20)
+    material = models.CharField(max_length=20)
+
+# Clase Camperas que hereda de Producto
+class Campera(Producto):
+    talle = models.CharField(max_length=10)
+    material = models.CharField(max_length=20)
+    pais_fabricante = models.CharField(max_length=30)
 
 
-class Estudiante(models.Model):
+
+###MODELOS PARA LOS CLIENTES y VENDEDORES###
+
+class Usuario (models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
     email = models.EmailField()
-
+    
     def __str__(self) -> str:
         return f"{self.nombre} {self.apellido}"
 
 
-class Curso(models.Model):
-    nombre = models.CharField(max_length=50)
-    comision = models.PositiveIntegerField()
-    profesor = models.ForeignKey(Profesor, on_delete=models.SET_NULL, null=True, blank=True)
 
+class Vendedor(Usuario):
+    identificacion = models.DecimalField(max_digits=10, decimal_places=2)
+
+class Cliente(Usuario):
+    descripcion = models.CharField(max_length=50)
+
+
+
+class Venta(models.Model):
+    
+    fecha = models.DateTimeField(default=datetime.datetime.now)
+    articulo = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    comprador = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     def __str__(self) -> str:
-        return f"{self.nombre} ({self.comision}) - {self.profesor}"
-
-
-class CursoEstudiantes(models.Model):
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-
-    def __str__(self) -> str:
-        return f"{self.curso} {self.estudiante}"
+        return f"{self.fecha} ({self.articulo}) - {self.comprador}"

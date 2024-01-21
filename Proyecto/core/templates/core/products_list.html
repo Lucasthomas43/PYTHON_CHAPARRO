@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+
+{% block contenido %}
+<h1> intento bajar la descript de los productos</h1>
+    {% for product in products %}
+    
+        <ul>
+            <li>
+                {{ product.nombre }}
+                {{ product.marca}}
+                {{ product.descripcion }}
+                {{ product.precio }}
+                {{ product.fecha_creacion }}
+            </li>
+        </ul>
+
+        
+    {% endfor %}
+    <button>   <a href="{% url 'index' %}">Volver al inicio</a>
+    </button>  
+           
+{% endblock contenido %}

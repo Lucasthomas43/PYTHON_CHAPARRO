@@ -1,12 +1,13 @@
 {% extends 'core/base.html' %}
 
-
 {% block contenido %}
-
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit">Guardar</button>
     </form>
 
+    <button>
+        <a href="{% url 'index' %}">Volver al inicio</a>
+    </button>
 {% endblock contenido %}

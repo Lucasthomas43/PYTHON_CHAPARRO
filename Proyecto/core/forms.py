@@ -1,9 +1,7 @@
 from django import forms
+from .models import Producto  # Asegúrate de importar tu modelo
 
-from . import models
-
-
-class ProfesorForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
-        model = models.Profesor
+        model = Producto  # Especifica el modelo asociado
         fields = "__all__"

@@ -2,8 +2,19 @@
 
 {% block contenido %}
     
-    <h1>Entrega</h1>
+    <h1>Pre entrega del proyecto final!</h1>
 
-    <button><a href="{% url 'profesor_list' %}">Ver Profesores</a></button>
-    <button><a href="{% url 'profesor_create' %}">Crear Profesores</a></button>
-{% endblock contenido %}
+    <a>Menu de navegacion: </a> 
+    
+    <ul> 
+        <li> /products "muestra todos los productos creados en la base de datos" <a href="{% url 'products_list' %}">Ir a la página de productos</a> </li> 
+        <li> /products/create "muestra la seccion que se abre para añadir un producto a la base de datos": <a href="{% url 'product_create' %}">Ir a la página de creacion</a> </li>
+        <li> /login "muestra la pagina que se te abre para logearte en la pagina" <a href="{% url 'login' %}">Ir a la página de login</a> </li>
+        <li> /register "muestra la pagina de registro" <a href="{% url 'register' %}">Ir a la página de register</a> </li>
+     
+    </ul>
+
+
+
+    
+    {% endblock contenido %}
