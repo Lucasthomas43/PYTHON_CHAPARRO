@@ -2,11 +2,11 @@
 
 ## Nombre
 
-- Nombre y apellido
+- lucas chaparro
 
 ## Resumen del proyecto
 
-- Resumen
+- vamos a crear una tienda de ropa, donde tengamos login y register, el index va a estar dedicado a los productos que se van a dividir en categorias, cada categoria va a tener su pagina propia para ver los productos que son de diferentes clases, ademas la creacion de los mismos utilizando los metodos post y get
 
 ## Pasos para ejecutar el proyecto
 
